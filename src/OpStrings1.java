@@ -1,34 +1,34 @@
-import java.util.concurrent.Callable;
-
 /**
  * Created by Julian on 23/06/2017.
  */
 
-public class OpStrings1 {
+public class OpStrings1{
 
     public static String rot(String strng) {
-        // your code
 
-        return "";
+        return strng;
     }
 
     public static String selfieAndRot(String strng) {
         // your code
 
-        return "";
+        return strng + " world";
     }
-    public static String oper(Callable<String> method_selection, String s) {
+    public static String oper(Fct operator, String s) {
         // your code and complete ... before operator
-
-
-        return "";
+        return operator.fct(s);
     }
 
     public static void main(String[] args) {
 
-        String test = "abcd\nefgh\nijkl";
-
-        System.out.println(test);
+        System.out.println(oper(OpStrings1::rot, "hello1"));
 
     }
+
+    public interface Fct {
+
+        public String fct (String strng);
+
+    }
+
 }
