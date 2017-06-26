@@ -2,8 +2,7 @@
  * Created by Julian on 26/06/2017.
  */
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
 public class Dinglemouse {
 
@@ -12,8 +11,15 @@ public class Dinglemouse {
         //Initialise ant body count
         int f_ant_alities = 0;
 
+        if (ants == null) {
+
+            return f_ant_alities;
+
+        }
+
         //Remove all live ants
-        String ants_dead = ants.replaceAll("ant","");
+        String ants_dead = ants.replaceAll(" ", ".");
+        ants_dead = ants_dead.replaceAll("ant", "") + ".";
 
         HashMap<String, Integer> body_parts_map = new HashMap<>();
 
@@ -21,11 +27,9 @@ public class Dinglemouse {
 
         for (int i = 0; i < ants_dead.length(); i++) {
 
-            if (ants_dead.charAt(i) != '.') {
+            if (ants_dead.charAt(i) == 'a' || ants_dead.charAt(i) == 'n' || ants_dead.charAt(i) == 't') {
 
                 ant_body_part_finder += ants_dead.charAt(i);
-
-            } else if (ant_body_part_finder.length() > 0) {
 
                 if (body_parts_map.containsKey(ant_body_part_finder)) {
                     //If the body part is already contained within the hashmap, increment the integer count
@@ -40,45 +44,30 @@ public class Dinglemouse {
                 ant_body_part_finder = "";
 
             }
+        }
+
+        Integer number_of_a_parts = body_parts_map.get("a");
+        Integer number_of_n_parts = body_parts_map.get("n");
+        Integer number_of_t_parts = body_parts_map.get("t");
+
+        if (number_of_a_parts == null) {
+
+            number_of_a_parts = 0;
+
+        }
+        if (number_of_n_parts == null) {
+
+            number_of_n_parts = 0;
+
+        }
+        if (number_of_t_parts == null) {
+
+            number_of_t_parts = 0;
 
         }
 
-        Iterator<String> body_parts_found_iterator = body_parts_map.keySet().iterator();
-
-        while(body_parts_found_iterator.hasNext()) {
-
-            String body_part_found = body_parts_found_iterator.next();
-
-            //If a full ant body is found, increment f_ant_alities count by 1 and decrement map value
-            if (body_part_found.length() == 3) {
-
-                int number_of_body_part = body_parts_map.get(body_part_found);
-
-                //Decrement body part count
-                if (number_of_body_part == 1) {
-
-                    body_parts_found_iterator.remove();
-                } else {
-
-                    body_parts_map.put(body_part_found, number_of_body_part - 1);
-
-                }
-
-                //Increment f_ant_alities count
-                f_ant_alities++;
-
-            }
-
-        }
+        f_ant_alities = Math.max(number_of_a_parts,Math.max(number_of_n_parts, number_of_t_parts));
 
         return f_ant_alities;
     }
-
-    public static void main(String[] args) {
-
-        System.out.println("Number of dead ants: 3");
-        System.out.println(deadAntCount("ant..na..ant.t..ant.a..nat....ant"));
-
-    }
-
 }
