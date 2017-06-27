@@ -24,39 +24,25 @@ public class Line {
     public static void main(String[] args) {
 
         int length = 5;
-        int x = 0;
 
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 160; i++) {
 
-            int divided = i / length;
+            double divided = (double) (i / length);
+            int num_repeats = 1;
 
-            System.out.println(divided);
+            if (i > 0) {
 
-//            System.out.println(getX(divided));
+                int log_test = (int) Math.ceil((Math.log((divided / 2) + 1) / Math.log(2)) + 1);
+//                System.out.println(i + " power: " + log_test);
 
-        }
+                num_repeats = (int) Math.pow(2, (log_test - 1));
 
-    }
 
-    public static int getX(int divided) {
+            }
 
-        int x;
-
-        if (divided <= 1) {
-
-            x = 1;
-
-        } else if (divided <= 2) {
-
-            x = 2;
-
-        } else {
-
-            x = 2 * (getX(divided - 2) + getX(divided - 1)) - 2 * (divided - 3);
+            System.out.println("repeats: " + num_repeats);
 
         }
-
-        return x;
 
     }
 
