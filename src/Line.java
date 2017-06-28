@@ -16,7 +16,7 @@ public class Line {
         //Establish the initial length of the queue
         int num_names = names.length;
 
-        double multiples_of_num_names = (double) n / num_names;
+        double multiples_of_num_names = (double) (n / num_names);
         int queue_cycle = 1;
         int max_num_of_individual = 1;
 
@@ -113,6 +113,8 @@ public class Line {
 
 
         }
+
+        System.out.println(WhoIsNext(new String[] { "Sheldon", "Leonard", "Penny", "Rajesh", "Howard" }, 2));
 
     }
 
