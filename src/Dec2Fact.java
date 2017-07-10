@@ -34,33 +34,36 @@ public class Dec2Fact {
         int[] multiplier = new int[str.length()];
 
 
-        for (int i = (str.length() - 1); i > -1; i--) {
+        for (int i = (multiplier.length - 1); i > -1; i--) {
 
-            multiplier[str.length() - 1 - i] = numberSystem.get(str.charAt(i));
+            multiplier[multiplier.length - 1 - i] = numberSystem.get(str.charAt(i));
 
         }
 
-        return multiply_factorials_recursive(multiplier, (str.length() - 1));
+        return multiply_factorials_recursive(multiplier, 0);
     }
 
-    public static long multiply_factorials_recursive(int[] multiplier, int factorial)
-    {
+    public static long multiply_factorials_recursive(int[] multiplier, int factorial) {
 
-        if(multiplier.length == 1)
-        {
+        //If factorial is at position 0, move further up the number sequence
+        if (factorial == 0) {
 
-            return 0;
+                return (factorial + multiply_factorials_recursive(multiplier, (factorial + 1)));
 
+        //Base case uf at tge end of the number sequence
+        } else if (factorial == (multiplier.length - 1)) {
+
+            return (factorial * multiplier[factorial]);
+
+        //If number position is between the first a last digit
         } else {
 
-            return (multiplier[factorial] * factorial + multiply_factorials_recursive(multiplier, factorial--));
+            return (factorial * (multiplier[factorial] + multiply_factorials_recursive(multiplier, factorial + 1)));
 
         }
     }
 
     public static void main(String[] args) {
-
-        System.out.println("Test");
 
         System.out.println(factString2Dec("1212210"));
 
