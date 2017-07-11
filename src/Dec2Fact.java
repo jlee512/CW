@@ -1,9 +1,8 @@
-import java.util.*;
-
 /**
  * Created by Julian on 11/07/2017.
  */
 
+import java.util.*;
 
 public class Dec2Fact {
 
@@ -26,9 +25,36 @@ public class Dec2Fact {
     public static String dec2FactString(long nb) {
 
         //0-9 are the normal decimal values, A-Z are values 10 through
-        Arraylist<Character>
+        String factString = "";
+        long division_result = nb;
+        long modulo_result;
+        char modulo_result_character;
+        int divider = 1;
 
-        return "";
+        while (division_result != 0) {
+
+            modulo_result = division_result % divider;
+
+            if(modulo_result < 9)
+            {
+
+                modulo_result_character = (char)(modulo_result + 48);
+
+            }
+            else
+            {
+
+                modulo_result_character = (char)(modulo_result + 65);
+
+            }
+
+            division_result = division_result / divider;
+            factString = modulo_result_character + factString;
+            divider++;
+
+        }
+
+        return factString;
     }
     public static long factString2Dec(String str) {
 
@@ -67,11 +93,5 @@ public class Dec2Fact {
             return (factorial * (multiplier[factorial] + multiply_factorials_recursive(multiplier, factorial + 1)));
 
         }
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(factString2Dec("1212210"));
-
     }
 }
