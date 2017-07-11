@@ -94,4 +94,10 @@ public class Dec2Fact {
 
         }
     }
+
+    public static void main(String[] args) {
+
+
+
+    }
 }
