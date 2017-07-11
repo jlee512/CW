@@ -7,18 +7,10 @@ import java.util.*;
 
 public class Dec2Fact {
 
-    public static String dec2FactString(long nb) {
-
-        //0-9 are the normal decimal values, A-Z are values 10 through
-
-
-        return "";
-    }
-    public static long factString2Dec(String str) {
-
-        //Construct a hashmap representing the number system
-        HashMap<Character, Integer> numberSystem = new HashMap<>();
-
+    //Construct a hashmap representing the number system
+    private static final HashMap<Character, Integer> numberSystem = new HashMap<>();
+    static {
+        HashMap<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < 36; i++) {
 
             if (i < 10) {
@@ -29,6 +21,20 @@ public class Dec2Fact {
             }
 
         }
+    }
+
+    public static String dec2FactString(long nb) {
+
+        //0-9 are the normal decimal values, A-Z are values 10 through
+        Arraylist<Character>
+
+        return "";
+    }
+    public static long factString2Dec(String str) {
+
+
+
+
 
         //Queue the decimal multipliers
         int[] multiplier = new int[str.length()];
