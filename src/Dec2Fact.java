@@ -16,7 +16,7 @@ public class Dec2Fact {
                 numberSystem.put((char)(i + 48), i);
             }
             else {
-                numberSystem.put((char)(i + 65), i);
+                numberSystem.put((char)(i + 55), i);
             }
 
         }
@@ -35,7 +35,7 @@ public class Dec2Fact {
 
             modulo_result = division_result % divider;
 
-            if(modulo_result < 9)
+            if(modulo_result < 10)
             {
 
                 modulo_result_character = (char)(modulo_result + 48);
@@ -44,7 +44,7 @@ public class Dec2Fact {
             else
             {
 
-                modulo_result_character = (char)(modulo_result + 65);
+                modulo_result_character = (char)(modulo_result + 55);
 
             }
 
@@ -58,11 +58,7 @@ public class Dec2Fact {
     }
     public static long factString2Dec(String str) {
 
-
-
-
-
-        //Queue the decimal multipliers
+        //Construct array of multipliers
         int[] multiplier = new int[str.length()];
 
 
@@ -97,7 +93,10 @@ public class Dec2Fact {
 
     public static void main(String[] args) {
 
-
+        System.out.println(factString2Dec("2DCAA5842344512200"));
+        System.out.println(dec2FactString(1234567890));
+        System.out.println(factString2Dec("14F9122694751231010"));
+        System.out.println(dec2FactString(8150835199999999L));
 
     }
 }
